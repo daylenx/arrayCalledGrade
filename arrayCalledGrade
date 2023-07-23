@@ -1,0 +1,43 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+double average(double *grades, int num_assign);
+
+int main()
+{
+    int num_assign;
+
+    cout << "How many assignments did you take? ";
+    cin >> num_assign;
+
+    double *grade = new double[num_assign];
+
+    cout << "Save the grade per assignment. " << endl;
+
+    for (int index = 0; index < num_assign; index++)
+    {
+        cout << "grade for assignment " << index + 1 << ": ";
+        cin >> grade[index];
+    }
+
+    cout << "Average: " << average(grade, num_assign) << endl;
+
+    delete[] grade;
+    grade = nullptr;
+
+    return 0;
+}
+
+double average(double *grades, int num_assign)
+{
+    double total = 0;
+
+    for (int index = 0; index < num_assign; index++)
+    {
+        total += grades[index];
+    }
+
+    return total / num_assign;
+}
